@@ -3,276 +3,189 @@
 .clubs-page {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 24px;
-  flex: 1;
-  align-self: stretch;
-}
-
-.table-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 24px;
-  flex: 1;
-  align-self: stretch;
-}
-
-.table {
-  display: flex;
+  width: 100%;
+  height: 100%;
   padding: 24px;
+  gap: 24px;
+  background: transparent;
+}
+
+.clubs-table-container {
+  display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 16px;
-  flex: 1;
-  align-self: stretch;
+  width: 100%;
   border-radius: 8px;
-  background: var(--Neutral-08);
+  background: #1E1E1E;
+  overflow: hidden;
 }
 
-.table-header {
-  display: flex;
-  align-self: stretch;
+.clubs-table-header {
+  padding: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #3E3E42;
 }
 
-.header-row {
-  display: flex;
-  padding: 8px 0 16px 0;
+.table-header-content {
+  display: grid;
+  grid-template-columns: 80px 1fr 140px 140px 120px 120px;
+  gap: 24px;
   align-items: center;
-  gap: 16px;
-  align-self: stretch;
-  border-bottom: 1px solid var(--Neutral);
 }
 
-.header-cell {
-  color: var(--White);
+.header-column {
+  color: #FCFCFC;
   font-family: 'Bai Jamjuree', -apple-system, Roboto, Helvetica, sans-serif;
   font-size: 16px;
-  font-style: normal;
   font-weight: 700;
   line-height: normal;
   letter-spacing: 0.5px;
+}
+
+.logo-column {
+  text-align: left;
+}
+
+.name-column {
+  text-align: left;
+}
+
+.country-column {
+  text-align: left;
+}
+
+.league-column {
+  text-align: left;
+}
+
+.season-column {
+  text-align: left;
+}
+
+.header-actions-column {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end;
+  align-items: center;
 }
 
-.logo-header {
-  flex: 1;
-}
-
-.club-name-header {
-  flex: 1;
-  width: 235px;
-}
-
-.country-header {
-  flex: 1;
-}
-
-.league-header {
-  flex: 1;
-}
-
-.season-header {
-  flex: 1;
-}
-
-.header-actions {
+.new-club-btn {
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 10px;
-  flex: 1;
-}
-
-.new-club-button {
-  display: flex;
-  height: 40px;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
   gap: 8px;
+  padding: 10px 24px 10px 16px;
   border-radius: 100px;
-  background: var(--White);
+  background: #FCFCFC;
   border: none;
   cursor: pointer;
-  padding: 10px 24px 10px 16px;
-}
-
-.new-club-button:hover {
-  background: #f0f0f0;
-}
-
-.button-icon {
-  width: 18px;
-  height: 18px;
-}
-
-.button-text {
-  color: var(--Black);
-  text-align: center;
+  transition: background-color 0.2s ease;
   font-family: Roboto, -apple-system, Roboto, Helvetica, sans-serif;
   font-size: 14px;
-  font-style: normal;
   font-weight: 500;
   line-height: 20px;
   letter-spacing: 0.1px;
+  color: #0D0D0D;
 }
 
-.table-body {
-  display: flex;
-  flex-direction: column;
-  align-self: stretch;
+.new-club-btn:hover {
+  background: #f0f0f0;
 }
 
-.table-row {
-  display: flex;
-  padding: 8px 0;
+.clubs-table-body {
+  padding: 24px;
+  padding-top: 0;
+}
+
+.club-row {
+  display: grid;
+  grid-template-columns: 80px 1fr 140px 140px 120px 120px;
+  gap: 24px;
   align-items: center;
-  gap: 16px;
-  align-self: stretch;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(62, 62, 66, 0.3);
 }
 
-.table-cell {
-  color: var(--White);
+.club-row:last-child {
+  border-bottom: none;
+}
+
+.row-column {
+  color: #FCFCFC;
   font-family: 'Bai Jamjuree', -apple-system, Roboto, Helvetica, sans-serif;
   font-size: 16px;
-  font-style: normal;
   font-weight: 400;
   line-height: normal;
   letter-spacing: 0.5px;
 }
 
-.logo-cell {
-  display: flex;
-  height: 38px;
-  padding-right: 131.333px;
-  align-items: center;
-  flex: 1;
-}
-
-.club-logo {
-  height: 38px;
+.logo-column .club-logo {
   width: 38px;
+  height: 38px;
+  border-radius: 8px;
   object-fit: contain;
-  flex: 1;
-  aspect-ratio: 1/1;
 }
 
-.club-name-cell {
-  flex: 1;
-  align-self: stretch;
-}
-
-.country-cell {
-  flex: 1;
-  align-self: stretch;
-}
-
-.league-cell {
-  flex: 1;
-  align-self: stretch;
-}
-
-.season-cell {
-  flex: 1;
-  align-self: stretch;
-}
-
-.actions-cell {
+.actions-column {
   display: flex;
   justify-content: flex-end;
-  align-items: flex-start;
+  align-items: center;
   gap: 24px;
-  flex: 1;
-  align-self: stretch;
 }
 
-.action-button {
+.action-btn {
   display: flex;
+  align-items: center;
+  justify-content: center;
   width: 24px;
   height: 24px;
-  justify-content: center;
-  align-items: center;
   background: transparent;
   border: none;
   cursor: pointer;
   padding: 0;
-  aspect-ratio: 1/1;
+  transition: opacity 0.2s ease;
 }
 
-.action-button:hover .action-icon path {
-  fill: var(--White);
+.action-btn:hover {
+  opacity: 0.8;
 }
 
-.action-icon {
-  width: 24px;
-  height: 24px;
+.action-btn:hover svg path {
+  fill: #FCFCFC;
 }
 
-.pagination-container {
+.clubs-pagination {
   display: flex;
-  padding: 16px 24px;
   justify-content: space-between;
   align-items: center;
-  align-self: stretch;
+  padding: 16px 24px;
   border-radius: 8px;
-  background: var(--Neutral-08);
+  background: #1E1E1E;
 }
 
-.previous-page,
-.next-page {
+.pagination-control {
   display: flex;
   align-items: center;
   gap: 16px;
   cursor: pointer;
-  transition: opacity 0.2s ease;
-}
-
-.previous-page.active,
-.next-page.active {
-  cursor: pointer;
-}
-
-.previous-page.active:hover,
-.next-page.active:hover {
-  opacity: 0.8;
-}
-
-.previous-page.disabled,
-.next-page.disabled {
-  cursor: default;
-  pointer-events: none;
-}
-
-.previous-page.disabled .pagination-text,
-.next-page.disabled .pagination-text {
-  color: var(--Neutral) !important;
-}
-
-.pagination-icon {
-  display: flex;
-  width: 24px;
-  height: 24px;
-  justify-content: center;
-  align-items: center;
-  aspect-ratio: 1/1;
-}
-
-.pagination-text {
-  color: var(--Neutral);
+  color: #9E9EA1;
   font-family: 'Bai Jamjuree', -apple-system, Roboto, Helvetica, sans-serif;
   font-size: 16px;
-  font-style: normal;
   font-weight: 400;
   line-height: normal;
   letter-spacing: 0.15px;
+  transition: color 0.2s ease;
 }
 
-.previous-page.active .pagination-text,
-.next-page.active .pagination-text {
-  color: var(--White);
+.pagination-control.active {
+  color: #FCFCFC;
+}
+
+.pagination-control.active:hover {
+  opacity: 0.8;
+}
+
+.pagination-control.disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+  color: #5E5E62;
 }
 
 .page-numbers {
@@ -282,22 +195,102 @@
 }
 
 .page-number {
-  display: flex;
-  width: 20px;
-  height: 20px;
-  justify-content: center;
-  align-items: center;
-  color: var(--Neutral);
-  text-align: center;
+  color: #9E9EA1;
   font-family: 'Bai Jamjuree', -apple-system, Roboto, Helvetica, sans-serif;
   font-size: 16px;
-  font-style: normal;
   font-weight: 400;
   line-height: normal;
   letter-spacing: 0.15px;
   cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: color 0.2s ease;
 }
 
 .page-number.active {
-  color: var(--White);
+  color: #FCFCFC;
+}
+
+.page-number:hover:not(.active) {
+  color: #FCFCFC;
+}
+
+@media (max-width: 1024px) {
+  .table-header-content,
+  .club-row {
+    grid-template-columns: 60px 1fr 120px 120px 100px 100px;
+    gap: 16px;
+  }
+
+  .clubs-page {
+    padding: 16px;
+  }
+
+  .clubs-table-header,
+  .clubs-table-body {
+    padding: 16px;
+  }
+
+  .clubs-pagination {
+    padding: 12px 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .table-header-content,
+  .club-row {
+    grid-template-columns: 50px 1fr 80px;
+    gap: 12px;
+  }
+
+  .country-column,
+  .league-column,
+  .season-column {
+    display: none;
+  }
+
+  .header-column {
+    font-size: 14px;
+  }
+
+  .row-column {
+    font-size: 14px;
+  }
+
+  .new-club-btn {
+    padding: 8px 16px 8px 12px;
+    font-size: 12px;
+  }
+
+  .pagination-control {
+    font-size: 14px;
+    gap: 8px;
+  }
+
+  .page-number {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .clubs-page {
+    padding: 12px;
+  }
+
+  .clubs-table-header,
+  .clubs-table-body {
+    padding: 12px;
+  }
+
+  .club-row {
+    padding: 12px 0;
+  }
+
+  .pagination-control span {
+    display: none;
+  }
+
+  .page-numbers {
+    gap: 8px;
+  }
 }
