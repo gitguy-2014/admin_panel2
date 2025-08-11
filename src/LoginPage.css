@@ -1,0 +1,485 @@
+:root {
+  --White: #FCFCFC;
+  --Neutral-03: #9E9EA1;
+  --Neutral: #5E5E62;
+  --Black: #0D0D0D;
+  --Error-03: #BA7774;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;700&family=Roboto:wght@400;500&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.login-page {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: url('https://api.builder.io/api/v1/image/assets/TEMP/408672f205d7fa21d5705f7fa95e1ab983c08a63?width=2880') lightgray 50% / cover no-repeat;
+  position: fixed;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+}
+
+.background-overlay {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  padding: 5vh 5vw;
+  justify-content: center;
+  align-items: center;
+  background: rgba(13, 13, 13, 0.90);
+  backdrop-filter: blur(10px);
+  position: relative;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.login-container {
+  display: flex;
+  width: 100%;
+  max-width: 552px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
+  position: relative;
+  z-index: 1;
+}
+
+.header-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  align-self: stretch;
+  position: relative;
+}
+
+.welcome-title {
+  color: var(--White);
+  font-family: 'Bai Jamjuree', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 45px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  position: relative;
+  margin: 0;
+}
+
+.welcome-subtitle {
+  align-self: stretch;
+  color: var(--Neutral-03);
+  font-family: 'Bai Jamjuree', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  position: relative;
+  margin: 0;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  position: relative;
+  width: 100%;
+}
+
+.login-form {
+  display: flex;
+  width: 100%;
+  padding: 40px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 32px;
+  border-radius: 8px;
+  border: 2px solid var(--Neutral);
+  position: relative;
+  box-sizing: border-box;
+}
+
+.login-form.has-error {
+  border: 2px solid var(--Error-03);
+}
+
+.input-fields {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  align-self: stretch;
+  position: relative;
+}
+
+.field-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  align-self: stretch;
+  position: relative;
+}
+
+.input-label {
+  width: 226px;
+  color: var(--White);
+  font-family: 'Bai Jamjuree', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.5px;
+  position: relative;
+}
+
+.input-container {
+  display: flex;
+  height: 40px;
+  padding: 8px 16px;
+  align-items: center;
+  gap: 10px;
+  align-self: stretch;
+  border-radius: 8px;
+  border: 1px solid var(--Neutral);
+  position: relative;
+}
+
+.login-form.has-error .input-container {
+  border: 1px solid var(--White);
+}
+
+.password-input {
+  padding: 8px 16px;
+  justify-content: space-between;
+}
+
+.text-input {
+  width: 100%;
+  color: var(--Neutral-03);
+  font-family: 'Bai Jamjuree', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.1px;
+  position: relative;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+.text-input::placeholder {
+  color: var(--Neutral-03);
+}
+
+.login-form.has-error .text-input {
+  color: var(--White);
+}
+
+.login-form.has-error .text-input::placeholder {
+  color: var(--White);
+}
+
+.eye-toggle {
+  display: flex;
+  width: 24px;
+  height: 24px;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  align-self: stretch;
+  position: relative;
+}
+
+.remember-section {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  position: relative;
+}
+
+.checkbox-container {
+  display: flex;
+  width: 40px;
+  height: 40px;
+  padding: 4px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.checkbox-state-layer {
+  display: flex;
+  padding: 11px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100px;
+  position: relative;
+}
+
+.checkbox-box {
+  width: 18px;
+  height: 18px;
+  border-radius: 2px;
+  border: 2px solid var(--White);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  cursor: pointer;
+}
+
+.checkbox-box.checked {
+  background: var(--White);
+}
+
+.checkbox-box svg {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+}
+
+.checkbox-hidden {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.remember-text {
+  color: var(--Neutral-03);
+  font-family: 'Bai Jamjuree', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.1px;
+  position: relative;
+  cursor: pointer;
+}
+
+.submit-button {
+  display: flex;
+  width: 140px;
+  height: 40px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 8px;
+  background: var(--White);
+  position: relative;
+  border: none;
+  cursor: pointer;
+}
+
+.button-state-layer {
+  display: flex;
+  padding: 10px 24px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  flex: 1 0 0;
+  align-self: stretch;
+  position: relative;
+}
+
+.button-text {
+  color: var(--Black);
+  text-align: center;
+  font-family: Roboto, -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0.1px;
+  position: relative;
+}
+
+.error-section {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  align-self: stretch;
+  position: relative;
+}
+
+.error-section svg {
+  display: flex;
+  width: 24px;
+  height: 24px;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.error-text {
+  flex: 1 0 0;
+  color: var(--Error-03);
+  font-family: 'Bai Jamjuree', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  position: relative;
+}
+
+@media (min-width: 1441px) {
+  .background-overlay {
+    padding: min(15vh, 200px) min(15vw, 200px);
+  }
+}
+
+@media (max-width: 1440px) and (min-width: 769px) {
+  .background-overlay {
+    padding: min(10vh, 150px) min(10vw, 100px);
+  }
+}
+
+@media (min-width: 2560px) {
+  .background-overlay {
+    padding: min(12vh, 250px) min(20vw, 400px);
+  }
+
+  .login-container {
+    max-width: 650px;
+  }
+
+  .welcome-title {
+    font-size: 52px;
+  }
+
+  .welcome-subtitle {
+    font-size: 20px;
+  }
+
+  .login-form {
+    padding: 50px;
+  }
+}
+
+@media (min-width: 1920px) and (max-width: 2559px) {
+  .background-overlay {
+    padding: min(12vh, 200px) min(15vw, 300px);
+  }
+
+  .login-container {
+    max-width: 600px;
+  }
+
+  .welcome-title {
+    font-size: 48px;
+  }
+
+  .welcome-subtitle {
+    font-size: 19px;
+  }
+
+  .login-form {
+    padding: 45px;
+  }
+}
+
+@media (max-width: 768px) {
+  .background-overlay {
+    padding: 40px 20px;
+  }
+
+  .login-container {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .login-form {
+    width: 100%;
+  }
+
+  .welcome-title {
+    font-size: 36px;
+  }
+
+  .welcome-subtitle {
+    font-size: 16px;
+  }
+
+  .login-form {
+    padding: 24px;
+  }
+
+  .form-actions {
+    flex-direction: column;
+    gap: 16px;
+    align-items: stretch;
+  }
+
+  .submit-button {
+    width: 100%;
+  }
+}
+
+/* Ultra-wide monitor support */
+@media (min-aspect-ratio: 21/9) {
+  .background-overlay {
+    padding: 8vh 25vw;
+  }
+}
+
+/* Very tall screens support */
+@media (max-aspect-ratio: 3/4) {
+  .background-overlay {
+    padding: 15vh 8vw;
+  }
+
+  .login-container {
+    max-width: 500px;
+  }
+}
+
+/* Ensure minimum and maximum constraints */
+@media (min-height: 1200px) {
+  .background-overlay {
+    padding-top: min(20vh, 300px);
+    padding-bottom: min(20vh, 300px);
+  }
+}
+
+@media (max-height: 600px) {
+  .background-overlay {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .login-container {
+    gap: 20px;
+  }
+
+  .welcome-title {
+    font-size: 38px;
+  }
+
+  .login-form {
+    padding: 30px;
+    gap: 20px;
+  }
+}
