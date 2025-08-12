@@ -60,18 +60,18 @@ const LeaguesPage = () => {
       <div className="table-container">
         <div className="leagues-table">
           <div className="table-header">
-            <div className="header-row">
-              <div className="header-cell logo-header">Logo</div>
-              <div className="header-cell name-header">League Name</div>
-              <div className="header-cell country-header">Country</div>
-              <div className="header-actions">
-                <button className="new-league-button" onClick={() => setShowNewModal(true)}>
-                  <svg className="button-icon" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M15 9.75H9.75V15H8.25V9.75H3V8.25H8.25V3H9.75V8.25H15V9.75Z" fill="#0D0D0D"/>
-                  </svg>
-                  <span className="button-text">New League</span>
-                </button>
-              </div>
+            <div className="header-cell logo-header">Logo</div>
+            <div className="header-cell name-header">
+              <span>League Name</span>
+            </div>
+            <div className="header-cell country-header">Country</div>
+            <div className="header-actions">
+              <button className="new-league-button" onClick={() => setShowNewModal(true)}>
+                <svg className="button-icon" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M15 9.75H9.75V15H8.25V9.75H3V8.25H8.25V3H9.75V8.25H15V9.75Z" fill="#0D0D0D"/>
+                </svg>
+                <span className="button-text">New League</span>
+              </button>
             </div>
           </div>
           
@@ -117,12 +117,20 @@ const LeaguesPage = () => {
 
           <div className="page-numbers">
             <div className="page-number active">{currentPage}</div>
-            {totalPages > 1 && currentPage < totalPages - 1 && (
+            {totalPages > 1 && (
               <>
-                {currentPage < totalPages - 2 && <div className="page-number">{currentPage + 1}</div>}
-                {currentPage < totalPages - 3 && <div className="page-number">{currentPage + 2}</div>}
-                {currentPage < totalPages - 4 && <div className="page-number">...</div>}
-                <div className="page-number">{totalPages}</div>
+                {currentPage + 1 <= totalPages && (
+                  <div className="page-number">{currentPage + 1}</div>
+                )}
+                {currentPage + 2 <= totalPages && (
+                  <div className="page-number">{currentPage + 2}</div>
+                )}
+                {currentPage + 3 < totalPages && (
+                  <div className="page-number">...</div>
+                )}
+                {totalPages > currentPage + 2 && (
+                  <div className="page-number">{totalPages}</div>
+                )}
               </>
             )}
           </div>
