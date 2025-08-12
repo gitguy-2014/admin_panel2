@@ -1,5 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;700&family=Roboto:wght@400;500&display=swap');
 
+:root {
+  --Neutral-09: #131314;
+  --Neutral-08: #262627;
+  --White: #FCFCFC;
+  --Neutral: #5E5E62;
+  --Black: #0D0D0D;
+  --Neutral-03: #9E9EA1;
+}
+
+/* Modal overlay with backdrop blur */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -14,6 +24,7 @@
   z-index: 1000;
 }
 
+/* Main modal container */
 .modal-container {
   display: flex;
   width: 512px;
@@ -23,29 +34,34 @@
   gap: 24px;
   border-radius: 8px;
   background: var(--Neutral-08);
-  max-height: 90vh;
-  overflow-y: auto;
+  height: 560px;
+  position: relative;
 }
 
+/* Modal header with close button and title */
 .modal-header {
   display: flex;
   align-items: center;
   gap: 16px;
   align-self: stretch;
+  position: relative;
 }
 
-.close-icon {
+.close-btn {
   display: flex;
   width: 24px;
   height: 24px;
   justify-content: center;
   align-items: center;
   aspect-ratio: 1/1;
+  background: transparent;
+  border: none;
   cursor: pointer;
   transition: opacity 0.2s ease;
+  padding: 0;
 }
 
-.close-icon:hover {
+.close-btn:hover {
   opacity: 0.8;
 }
 
@@ -56,6 +72,17 @@
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+  margin: 0;
+}
+
+/* Form structure */
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 24px;
+  align-self: stretch;
+  flex: 1;
 }
 
 .form-fields {
@@ -64,9 +91,11 @@
   align-items: flex-start;
   gap: 16px;
   align-self: stretch;
+  flex: 1;
 }
 
-.field-group {
+/* Form group for each field */
+.form-group {
   display: flex;
   height: 64px;
   flex-direction: column;
@@ -75,7 +104,8 @@
   align-self: stretch;
 }
 
-.field-label {
+/* Form labels */
+.form-label {
   width: 226px;
   color: var(--Neutral-03);
   font-family: 'Bai Jamjuree', -apple-system, Roboto, Helvetica, sans-serif;
@@ -86,6 +116,7 @@
   letter-spacing: 0.5px;
 }
 
+/* Dropdown field styling */
 .dropdown-field {
   display: flex;
   height: 40px;
@@ -104,6 +135,7 @@
   border-color: var(--White);
 }
 
+/* Dropdown text overlay */
 .dropdown-text {
   width: 254.438px;
   color: var(--Neutral);
@@ -118,12 +150,14 @@
   left: 16px;
   top: 50%;
   transform: translateY(-50%);
+  z-index: 2;
 }
 
 .dropdown-text.filled {
   color: var(--White);
 }
 
+/* Hidden select element */
 .dropdown-select {
   width: 100%;
   height: 100%;
@@ -142,7 +176,7 @@
   position: absolute;
   left: 0;
   top: 0;
-  z-index: 1;
+  z-index: 3;
 }
 
 .dropdown-select option {
@@ -150,15 +184,19 @@
   color: var(--White);
 }
 
+/* Dropdown arrow */
 .dropdown-arrow {
   position: absolute;
   right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
   pointer-events: none;
   width: 24px;
   height: 24px;
-  z-index: 2;
+  z-index: 1;
 }
 
+/* Text field styling */
 .text-field {
   display: flex;
   height: 40px;
@@ -177,7 +215,7 @@
 }
 
 .text-input {
-  width: 100%;
+  width: 254.438px;
   background: transparent;
   border: none;
   outline: none;
@@ -206,6 +244,7 @@
   border-color: var(--White);
 }
 
+/* File upload container */
 .file-upload-container {
   display: flex;
   align-items: flex-start;
@@ -213,6 +252,7 @@
   align-self: stretch;
 }
 
+/* Upload icon area */
 .file-upload-icon {
   display: flex;
   width: 80px;
@@ -226,6 +266,7 @@
   border: 1px solid var(--Neutral);
   background: transparent;
   position: relative;
+  cursor: pointer;
 }
 
 .file-input {
@@ -236,6 +277,7 @@
   cursor: pointer;
   top: 0;
   left: 0;
+  z-index: 2;
 }
 
 .file-upload-label {
@@ -250,6 +292,7 @@
   pointer-events: none;
 }
 
+/* File upload info */
 .file-upload-info {
   display: flex;
   flex-direction: column;
@@ -280,6 +323,7 @@
   letter-spacing: 0.1px;
 }
 
+/* Save button */
 .save-button {
   display: flex;
   width: 140px;
@@ -310,10 +354,10 @@
   letter-spacing: 0.1px;
 }
 
-/* Edit League Modal specific styles */
+/* Edit logo container for Edit modal */
 .edit-logo-container {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 16px;
   align-self: stretch;
 }
@@ -352,6 +396,9 @@
     width: calc(100% - 32px);
     max-width: 480px;
     margin: 16px;
+    height: auto;
+    max-height: 90vh;
+    overflow-y: auto;
   }
 
   .file-upload-container,
@@ -374,6 +421,11 @@
   }
 
   .save-button {
+    width: 100%;
+  }
+
+  .dropdown-text,
+  .text-input {
     width: 100%;
   }
 }
