@@ -272,6 +272,17 @@
   background: transparent;
   position: relative;
   cursor: pointer;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.file-upload-icon:hover {
+  border-color: var(--White);
+  background: rgba(252, 252, 252, 0.05);
+}
+
+.file-upload-icon.drag-over {
+  border-color: var(--White);
+  background: rgba(252, 252, 252, 0.1);
 }
 
 .file-input {
