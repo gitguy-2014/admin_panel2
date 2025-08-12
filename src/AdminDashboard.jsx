@@ -10,8 +10,7 @@ const AdminDashboard = ({ onLogout }) => {
     { id: 'overview', label: 'Overview' },
     { id: 'leagues', label: 'Leagues' },
     { id: 'clubs', label: 'Clubs' },
-    { id: 'players', label: 'Players' },
-    { id: 'import-data', label: 'Import Data' }
+    { id: 'players', label: 'Players' }
   ];
 
   const renderContent = () => {
