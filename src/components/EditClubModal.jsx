@@ -6,7 +6,7 @@ const EditClubModal = ({ club, onClose }) => {
     country: club?.country || 'Argentina',
     league: club?.league || 'Liga Profesional',
     season: club?.season || '2024 - 25',
-    clubName: club?.name || '',
+    clubName: club?.name || 'AA Argentinos Juniors',
     logo: null
   });
 
@@ -36,13 +36,13 @@ const EditClubModal = ({ club, onClose }) => {
 
   return (
     <div className="modal-overlay">
-      <div className="club-modal-container">
+      <div className="modal-container">
         <div className="modal-header">
           <button className="close-btn" onClick={onClose}>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M12 22.75C6.07 22.75 1.25 17.93 1.25 12C1.25 6.07 6.07 1.25 12 1.25C17.93 1.25 22.75 6.07 22.75 12C22.75 17.93 17.93 22.75 12 22.75ZM12 2.75C6.9 2.75 2.75 6.9 2.75 12C2.75 17.1 6.9 21.25 12 21.25C17.1 21.25 21.25 17.1 21.25 12C21.25 6.9 17.1 2.75 12 2.75Z" fill="#FCFCFC"/>
-              <path d="M9.16937 15.5801C8.97937 15.5801 8.78938 15.5101 8.63938 15.3601C8.34938 15.0701 8.34938 14.5901 8.63938 14.3001L14.2994 8.64011C14.5894 8.35011 15.0694 8.35011 15.3594 8.64011C15.6494 8.93011 15.6494 9.41011 15.3594 9.70011L9.69937 15.3601C9.55937 15.5101 9.35937 15.5801 9.16937 15.5801Z" fill="#FCFCFC"/>
-              <path d="M14.8294 15.5801C14.6394 15.5801 14.4494 15.5101 14.2994 15.3601L8.63938 9.70011C8.34938 9.41011 8.34938 8.93011 8.63938 8.64011C8.92937 8.35011 9.40937 8.35011 9.69937 8.64011L15.3594 14.3001C15.6494 14.5901 15.6494 15.0701 15.3594 15.3601C15.2094 15.5101 15.0194 15.5801 14.8294 15.5801Z" fill="#FCFCFC"/>
+              <path d="M9.16999 15.58C8.97999 15.58 8.78999 15.51 8.63999 15.36C8.34999 15.07 8.34999 14.59 8.63999 14.3L14.3 8.63999C14.59 8.34999 15.07 8.34999 15.36 8.63999C15.65 8.92999 15.65 9.40998 15.36 9.69998L9.69998 15.36C9.55998 15.51 9.35999 15.58 9.16999 15.58Z" fill="#FCFCFC"/>
+              <path d="M14.83 15.58C14.64 15.58 14.45 15.51 14.3 15.36L8.63999 9.69998C8.34999 9.40998 8.34999 8.92999 8.63999 8.63999C8.92999 8.34999 9.40998 8.34999 9.69998 8.63999L15.36 14.3C15.65 14.59 15.65 15.07 15.36 15.36C15.21 15.51 15.02 15.58 14.83 15.58Z" fill="#FCFCFC"/>
             </svg>
           </button>
           <h2 className="modal-title">Edit Club</h2>
@@ -52,12 +52,13 @@ const EditClubModal = ({ club, onClose }) => {
           <div className="form-fields">
             <div className="form-group">
               <label className="form-label">Country</label>
-              <div className="select-wrapper">
+              <div className="dropdown-field filled">
                 <select
                   name="country"
                   value={formData.country}
                   onChange={handleInputChange}
-                  className="form-select filled"
+                  className="dropdown-select"
+                  required
                 >
                   <option value="Argentina">Argentina</option>
                   <option value="Belgium">Belgium</option>
@@ -66,7 +67,10 @@ const EditClubModal = ({ club, onClose }) => {
                   <option value="Germany">Germany</option>
                   <option value="Italy">Italy</option>
                 </select>
-                <svg className="select-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <div className="dropdown-text filled">
+                  {formData.country}
+                </div>
+                <svg className="dropdown-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M12 16.8C11.3 16.8 10.6 16.53 10.07 16L3.55002 9.48001C3.26002 9.19001 3.26002 8.71001 3.55002 8.42001C3.84002 8.13001 4.32002 8.13001 4.61002 8.42001L11.13 14.94C11.61 15.42 12.39 15.42 12.87 14.94L19.39 8.42001C19.68 8.13001 20.16 8.13001 20.45 8.42001C20.74 8.71001 20.74 9.19001 20.45 9.48001L13.93 16C13.4 16.53 12.7 16.8 12 16.8Z" fill="#FCFCFC"/>
                 </svg>
               </div>
@@ -74,12 +78,13 @@ const EditClubModal = ({ club, onClose }) => {
 
             <div className="form-group">
               <label className="form-label">League</label>
-              <div className="select-wrapper">
+              <div className="dropdown-field filled">
                 <select
                   name="league"
                   value={formData.league}
                   onChange={handleInputChange}
-                  className="form-select filled"
+                  className="dropdown-select"
+                  required
                 >
                   <option value="Liga Profesional">Liga Profesional</option>
                   <option value="Premier League">Premier League</option>
@@ -87,7 +92,10 @@ const EditClubModal = ({ club, onClose }) => {
                   <option value="Bundesliga">Bundesliga</option>
                   <option value="Serie A">Serie A</option>
                 </select>
-                <svg className="select-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <div className="dropdown-text filled">
+                  {formData.league}
+                </div>
+                <svg className="dropdown-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M12 16.8C11.3 16.8 10.6 16.53 10.07 16L3.55002 9.48001C3.26002 9.19001 3.26002 8.71001 3.55002 8.42001C3.84002 8.13001 4.32002 8.13001 4.61002 8.42001L11.13 14.94C11.61 15.42 12.39 15.42 12.87 14.94L19.39 8.42001C19.68 8.13001 20.16 8.13001 20.45 8.42001C20.74 8.71001 20.74 9.19001 20.45 9.48001L13.93 16C13.4 16.53 12.7 16.8 12 16.8Z" fill="#FCFCFC"/>
                 </svg>
               </div>
@@ -95,49 +103,52 @@ const EditClubModal = ({ club, onClose }) => {
 
             <div className="form-group">
               <label className="form-label">Season</label>
-              <div className="select-wrapper">
+              <div className="dropdown-field filled">
                 <select
                   name="season"
                   value={formData.season}
                   onChange={handleInputChange}
-                  className="form-select filled"
+                  className="dropdown-select"
+                  required
                 >
                   <option value="2024 - 25">2024 - 25</option>
                   <option value="2023 - 24">2023 - 24</option>
                   <option value="2022 - 23">2022 - 23</option>
                 </select>
-                <svg className="select-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12 16.8C11.3 16.8 10.6 16.53 10.07 16L3.55002 9.48001C3.26002 9.19001 3.26002 8.71001 3.55002 8.42001C3.84002 8.13001 4.32002 8.13001 4.61002 8.42001L11.13 14.94C11.61 15.42 12.39 15.42 12.87 14.94L19.39 8.42001C19.68 8.13001 20.16 8.13001 20.45 8.42001C20.74 8.71001 20.74 9.19001 20.45 9.48001L13.93 16C13.4 16.53 12.7 16.8 12 16.8Z" fill="#FCFCFC"/>
+                <div className="dropdown-text filled">
+                  {formData.season}
+                </div>
+                <svg className="dropdown-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 16.7999C11.3 16.7999 10.6 16.5299 10.07 15.9999L3.55002 9.47989C3.26002 9.18989 3.26002 8.70989 3.55002 8.41989C3.84002 8.12989 4.32002 8.12989 4.61002 8.41989L11.13 14.9399C11.61 15.4199 12.39 15.4199 12.87 14.9399L19.39 8.41989C19.68 8.12989 20.16 8.12989 20.45 8.41989C20.74 8.70989 20.74 9.18989 20.45 9.47989L13.93 15.9999C13.4 16.5299 12.7 16.7999 12 16.7999Z" fill="#FCFCFC"/>
                 </svg>
               </div>
             </div>
 
             <div className="form-group">
               <label className="form-label">Club Name</label>
-              <input
-                type="text"
-                name="clubName"
-                value={formData.clubName}
-                onChange={handleInputChange}
-                placeholder="Enter Club Name"
-                className="form-input filled"
-                required
-              />
+              <div className="text-field filled">
+                <input
+                  type="text"
+                  name="clubName"
+                  value={formData.clubName}
+                  onChange={handleInputChange}
+                  placeholder="Enter Club Name"
+                  className="text-input filled"
+                  required
+                />
+              </div>
             </div>
 
-            <div className="logo-upload-section">
-              {club?.logo && (
-                <div className="current-logo-preview">
-                  <img 
-                    src={club.logo} 
-                    alt="Current club logo" 
-                    className="logo-image"
-                  />
-                </div>
-              )}
-              <div className="upload-info">
-                <div className="upload-title">Logo</div>
-                <div className="upload-description">
+            <div className="edit-logo-container">
+              <div className="current-logo">
+                <img 
+                  src="https://api.builder.io/api/v1/image/assets/TEMP/b7ddb62eaa88bdec6f78f9dd8bd0875b26941a54?width=160" 
+                  alt="Current club logo" 
+                />
+              </div>
+              <div className="logo-info">
+                <div className="file-label">Logo</div>
+                <div className="file-description">
                   PNG Format - (Transparent)<br />
                   Max file size allowed: 1MB
                 </div>
@@ -145,8 +156,8 @@ const EditClubModal = ({ club, onClose }) => {
             </div>
           </div>
 
-          <button type="submit" className="save-btn">
-            Save
+          <button type="submit" className="save-button">
+            <span>Save</span>
           </button>
         </form>
       </div>
