@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Modal.css';
 
-const NewLeagueModal = ({ onClose }) => {
+const NewLeagueModal = ({ onClose, onSave }) => {
   const [formData, setFormData] = useState({
     country: '',
     leagueName: '',
