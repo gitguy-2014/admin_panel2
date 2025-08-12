@@ -227,7 +227,10 @@ const LeaguesPage = () => {
       {/* Modal dialogs - conditionally rendered */}
       {/* New league creation modal */}
       {showNewModal && (
-        <NewLeagueModal onClose={() => setShowNewModal(false)} />
+        <NewLeagueModal
+          onClose={() => setShowNewModal(false)}
+          onSave={handleCreateLeague}
+        />
       )}
 
       {/* Edit league modal */}
@@ -235,6 +238,7 @@ const LeaguesPage = () => {
         <EditLeagueModal
           league={selectedLeague}
           onClose={() => setShowEditModal(false)}
+          onSave={handleUpdateLeague}
         />
       )}
     </div>
