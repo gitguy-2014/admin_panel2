@@ -135,7 +135,7 @@ const NewClubModal = ({ onClose }) => {
                   name="clubName"
                   value={formData.clubName}
                   onChange={handleInputChange}
-                  placeholder="Enter League Name"
+                  placeholder="Enter Club Name"
                   className={`text-input ${formData.clubName ? 'filled' : ''}`}
                   required
                 />
