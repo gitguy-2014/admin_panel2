@@ -179,7 +179,7 @@
 
 .header {
   display: flex;
-  width: 100%;
+  width: 1168px;
   height: 66px;
   padding: 16px 24px 16px 0;
   flex-direction: column;
@@ -189,6 +189,9 @@
   flex-shrink: 0;
   border-radius: 0 0 8px 0;
   background: var(--Neutral-08);
+  position: absolute;
+  left: 272px;
+  top: 0px;
 }
 
 .header-title {
