@@ -197,6 +197,10 @@
   z-index: 1;
 }
 
+.dropdown-field.filled .dropdown-arrow path {
+  fill: var(--White);
+}
+
 /* Text field styling */
 .text-field {
   display: flex;
