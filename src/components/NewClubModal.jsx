@@ -36,108 +36,111 @@ const NewClubModal = ({ onClose }) => {
 
   return (
     <div className="modal-overlay">
-      <div className="modal-container club-modal">
+      <div className="club-modal-container">
         <div className="modal-header">
-          <svg className="close-icon" onClick={onClose} width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 22.75C6.07 22.75 1.25 17.93 1.25 12C1.25 6.07 6.07 1.25 12 1.25C17.93 1.25 22.75 6.07 22.75 12C22.75 17.93 17.93 22.75 12 22.75ZM12 2.75C6.9 2.75 2.75 6.9 2.75 12C2.75 17.1 6.9 21.25 12 21.25C17.1 21.25 21.25 17.1 21.25 12C21.25 6.9 17.1 2.75 12 2.75Z" fill="#FCFCFC"/>
-            <path d="M9.16937 15.5801C8.97937 15.5801 8.78938 15.5101 8.63938 15.3601C8.34938 15.0701 8.34938 14.5901 8.63938 14.3001L14.2994 8.64011C14.5894 8.35011 15.0694 8.35011 15.3594 8.64011C15.6494 8.93011 15.6494 9.41011 15.3594 9.70011L9.69937 15.3601C9.55937 15.5101 9.35937 15.5801 9.16937 15.5801Z" fill="#FCFCFC"/>
-            <path d="M14.8294 15.5801C14.6394 15.5801 14.4494 15.5101 14.2994 15.3601L8.63938 9.70011C8.34938 9.41011 8.34938 8.93011 8.63938 8.64011C8.92937 8.35011 9.40937 8.35011 9.69937 8.64011L15.3594 14.3001C15.6494 14.5901 15.6494 15.0701 15.3594 15.3601C15.2094 15.5101 15.0194 15.5801 14.8294 15.5801Z" fill="#FCFCFC"/>
-          </svg>
-          <div className="modal-title">New Club</div>
+          <button className="close-btn" onClick={onClose}>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 22.75C6.07 22.75 1.25 17.93 1.25 12C1.25 6.07 6.07 1.25 12 1.25C17.93 1.25 22.75 6.07 22.75 12C22.75 17.93 17.93 22.75 12 22.75ZM12 2.75C6.9 2.75 2.75 6.9 2.75 12C2.75 17.1 6.9 21.25 12 21.25C17.1 21.25 21.25 17.1 21.25 12C21.25 6.9 17.1 2.75 12 2.75Z" fill="#FCFCFC"/>
+              <path d="M9.16937 15.5801C8.97937 15.5801 8.78938 15.5101 8.63938 15.3601C8.34938 15.0701 8.34938 14.5901 8.63938 14.3001L14.2994 8.64011C14.5894 8.35011 15.0694 8.35011 15.3594 8.64011C15.6494 8.93011 15.6494 9.41011 15.3594 9.70011L9.69937 15.3601C9.55937 15.5101 9.35937 15.5801 9.16937 15.5801Z" fill="#FCFCFC"/>
+              <path d="M14.8294 15.5801C14.6394 15.5801 14.4494 15.5101 14.2994 15.3601L8.63938 9.70011C8.34938 9.41011 8.34938 8.93011 8.63938 8.64011C8.92937 8.35011 9.40937 8.35011 9.69937 8.64011L15.3594 14.3001C15.6494 14.5901 15.6494 15.0701 15.3594 15.3601C15.2094 15.5101 15.0194 15.5801 14.8294 15.5801Z" fill="#FCFCFC"/>
+            </svg>
+          </button>
+          <h2 className="modal-title">New Club</h2>
         </div>
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="modal-form">
           <div className="form-fields">
-            <div className="field-group">
-              <label className="field-label">Country</label>
-              <div className={`dropdown-field ${formData.country ? 'filled' : ''}`}>
+            <div className="form-group">
+              <label className="form-label">Country</label>
+              <div className="select-wrapper">
                 <select
                   name="country"
                   value={formData.country}
                   onChange={handleInputChange}
-                  className={`dropdown-select ${formData.country ? 'filled' : ''}`}
+                  className="form-select"
+                  required
                 >
                   <option value="">Select Country</option>
-                  <option value="argentina">Argentina</option>
-                  <option value="belgium">Belgium</option>
-                  <option value="france">France</option>
-                  <option value="spain">Spain</option>
-                  <option value="germany">Germany</option>
-                  <option value="italy">Italy</option>
+                  <option value="Argentina">Argentina</option>
+                  <option value="Belgium">Belgium</option>
+                  <option value="France">France</option>
+                  <option value="Spain">Spain</option>
+                  <option value="Germany">Germany</option>
+                  <option value="Italy">Italy</option>
                 </select>
-                <svg className="dropdown-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg className="select-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M12 16.8C11.3 16.8 10.6 16.53 10.07 16L3.55002 9.48001C3.26002 9.19001 3.26002 8.71001 3.55002 8.42001C3.84002 8.13001 4.32002 8.13001 4.61002 8.42001L11.13 14.94C11.61 15.42 12.39 15.42 12.87 14.94L19.39 8.42001C19.68 8.13001 20.16 8.13001 20.45 8.42001C20.74 8.71001 20.74 9.19001 20.45 9.48001L13.93 16C13.4 16.53 12.7 16.8 12 16.8Z" fill="#5E5E62"/>
                 </svg>
               </div>
             </div>
 
-            <div className="field-group">
-              <label className="field-label">League</label>
-              <div className={`dropdown-field ${formData.league ? 'filled' : ''}`}>
+            <div className="form-group">
+              <label className="form-label">League</label>
+              <div className="select-wrapper">
                 <select
                   name="league"
                   value={formData.league}
                   onChange={handleInputChange}
-                  className={`dropdown-select ${formData.league ? 'filled' : ''}`}
+                  className="form-select"
+                  required
                 >
                   <option value="">Select League</option>
-                  <option value="liga-profesional">Liga Profesional</option>
-                  <option value="premier-league">Premier League</option>
-                  <option value="la-liga">La Liga</option>
-                  <option value="bundesliga">Bundesliga</option>
-                  <option value="serie-a">Serie A</option>
+                  <option value="Liga Profesional">Liga Profesional</option>
+                  <option value="Premier League">Premier League</option>
+                  <option value="La Liga">La Liga</option>
+                  <option value="Bundesliga">Bundesliga</option>
+                  <option value="Serie A">Serie A</option>
                 </select>
-                <svg className="dropdown-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg className="select-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M12 16.8C11.3 16.8 10.6 16.53 10.07 16L3.55002 9.48001C3.26002 9.19001 3.26002 8.71001 3.55002 8.42001C3.84002 8.13001 4.32002 8.13001 4.61002 8.42001L11.13 14.94C11.61 15.42 12.39 15.42 12.87 14.94L19.39 8.42001C19.68 8.13001 20.16 8.13001 20.45 8.42001C20.74 8.71001 20.74 9.19001 20.45 9.48001L13.93 16C13.4 16.53 12.7 16.8 12 16.8Z" fill="#5E5E62"/>
                 </svg>
               </div>
             </div>
 
-            <div className="field-group">
-              <label className="field-label">Season</label>
-              <div className={`dropdown-field ${formData.season ? 'filled' : ''}`}>
+            <div className="form-group">
+              <label className="form-label">Season</label>
+              <div className="select-wrapper">
                 <select
                   name="season"
                   value={formData.season}
                   onChange={handleInputChange}
-                  className={`dropdown-select ${formData.season ? 'filled' : ''}`}
+                  className="form-select"
+                  required
                 >
                   <option value="">Select Season</option>
-                  <option value="2024-25">2024 - 25</option>
-                  <option value="2023-24">2023 - 24</option>
-                  <option value="2022-23">2022 - 23</option>
+                  <option value="2024 - 25">2024 - 25</option>
+                  <option value="2023 - 24">2023 - 24</option>
+                  <option value="2022 - 23">2022 - 23</option>
                 </select>
-                <svg className="dropdown-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg className="select-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M12 16.8C11.3 16.8 10.6 16.53 10.07 16L3.55002 9.48001C3.26002 9.19001 3.26002 8.71001 3.55002 8.42001C3.84002 8.13001 4.32002 8.13001 4.61002 8.42001L11.13 14.94C11.61 15.42 12.39 15.42 12.87 14.94L19.39 8.42001C19.68 8.13001 20.16 8.13001 20.45 8.42001C20.74 8.71001 20.74 9.19001 20.45 9.48001L13.93 16C13.4 16.53 12.7 16.8 12 16.8Z" fill="#5E5E62"/>
                 </svg>
               </div>
             </div>
 
-            <div className="field-group">
-              <label className="field-label">Club Name</label>
-              <div className={`text-field ${formData.clubName ? 'filled' : ''}`}>
-                <input
-                  type="text"
-                  name="clubName"
-                  value={formData.clubName}
-                  onChange={handleInputChange}
-                  placeholder="Enter League Name"
-                  className={`text-input ${formData.clubName ? 'filled' : ''}`}
-                  required
-                />
-              </div>
+            <div className="form-group">
+              <label className="form-label">Club Name</label>
+              <input
+                type="text"
+                name="clubName"
+                value={formData.clubName}
+                onChange={handleInputChange}
+                placeholder="Enter League Name"
+                className="form-input"
+                required
+              />
             </div>
 
-            <div className="file-upload-container">
-              <div className="file-upload-icon">
+            <div className="logo-upload-section">
+              <div className="upload-area">
                 <input 
                   type="file"
                   accept=".png"
                   onChange={handleFileUpload}
                   className="file-input"
-                  id="club-logo-upload"
+                  id="logo-upload"
                 />
-                <label htmlFor="club-logo-upload" className="file-upload-label">
+                <label htmlFor="logo-upload" className="upload-label">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M8.99994 17.75C8.58994 17.75 8.24994 17.41 8.24994 17V12.81L7.52994 13.53C7.23994 13.82 6.75994 13.82 6.46994 13.53C6.17994 13.24 6.17994 12.76 6.46994 12.47L8.46994 10.47C8.67994 10.26 9.00994 10.19 9.28994 10.31C9.56994 10.42 9.74994 10.7 9.74994 11V17C9.74994 17.41 9.40994 17.75 8.99994 17.75Z" fill="#FCFCFC"/>
                     <path d="M10.9999 13.7499C10.8099 13.7499 10.6199 13.6799 10.4699 13.5299L8.46994 11.5299C8.17994 11.2399 8.17994 10.7599 8.46994 10.4699C8.75994 10.1799 9.23994 10.1799 9.52994 10.4699L11.5299 12.4699C11.8199 12.7599 11.8199 13.2399 11.5299 13.5299C11.3799 13.6799 11.1899 13.7499 10.9999 13.7499Z" fill="#FCFCFC"/>
@@ -146,9 +149,9 @@ const NewClubModal = ({ onClose }) => {
                   </svg>
                 </label>
               </div>
-              <div className="file-upload-info">
-                <div className="file-label">Logo</div>
-                <div className="file-description">
+              <div className="upload-info">
+                <div className="upload-title">Logo</div>
+                <div className="upload-description">
                   PNG Format - (Transparent)<br />
                   Max file size allowed: 1MB
                 </div>
@@ -156,8 +159,8 @@ const NewClubModal = ({ onClose }) => {
             </div>
           </div>
 
-          <button type="submit" className="save-button">
-            <span>Save</span>
+          <button type="submit" className="save-btn">
+            Save
           </button>
         </form>
       </div>
