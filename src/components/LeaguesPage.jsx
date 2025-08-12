@@ -7,8 +7,8 @@ const LeaguesPage = () => {
   const [showNewModal, setShowNewModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
   const [selectedLeague, setSelectedLeague] = useState(null);
-  const [currentPage, setCurrentPage] = useState(1); // Change to 3 to test last page
-  const [totalPages] = useState(3); // Example: 3 total pages
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages] = useState(10);
 
   const leagues = [
     {
@@ -58,20 +58,20 @@ const LeaguesPage = () => {
   return (
     <div className="leagues-page">
       <div className="table-container">
-        <div className="table">
+        <div className="leagues-table">
           <div className="table-header">
-            <div className="header-row">
-              <div className="header-cell logo-header">Logo</div>
-              <div className="header-cell name-header">League Name</div>
-              <div className="header-cell country-header">Country</div>
-              <div className="header-actions">
-                <button className="new-league-button" onClick={() => setShowNewModal(true)}>
-                  <svg className="button-icon" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M15 9.75H9.75V15H8.25V9.75H3V8.25H8.25V3H9.75V8.25H15V9.75Z" fill="#0D0D0D"/>
-                  </svg>
-                  <span className="button-text">New League</span>
-                </button>
-              </div>
+            <div className="header-cell logo-header">Logo</div>
+            <div className="header-cell name-header">
+              <span>League Name</span>
+            </div>
+            <div className="header-cell country-header">Country</div>
+            <div className="header-actions">
+              <button className="new-league-button" onClick={() => setShowNewModal(true)}>
+                <svg className="button-icon" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M15 9.75H9.75V15H8.25V9.75H3V8.25H8.25V3H9.75V8.25H15V9.75Z" fill="#0D0D0D"/>
+                </svg>
+                <span className="button-text">New League</span>
+              </button>
             </div>
           </div>
           
@@ -86,16 +86,16 @@ const LeaguesPage = () => {
                 <div className="table-cell actions-cell">
                   <button className="action-button" onClick={() => handleEdit(league)}>
                     <svg className="action-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M5.53803 19.5201C4.92803 19.5201 4.35803 19.31 3.94803 18.92C3.42803 18.43 3.17803 17.69 3.26803 16.89L3.63803 13.65C3.70803 13.04 4.07803 12.23 4.50803 11.79L12.718 3.10005C14.768 0.930049 16.908 0.870049 19.078 2.92005C21.248 4.97005 21.308 7.11005 19.258 9.28005L11.048 17.97C10.628 18.42 9.84803 18.84 9.23803 18.9401L6.01803 19.49C5.84803 19.5 5.69803 19.5201 5.53803 19.5201ZM15.928 2.91005C15.158 2.91005 14.488 3.39005 13.808 4.11005L5.59803 12.8101C5.39803 13.0201 5.16803 13.5201 5.12803 13.8101L4.75803 17.05C4.71803 17.38 4.79803 17.65 4.97803 17.82C5.15803 17.99 5.42803 18.05 5.75803 18L8.97803 17.4501C9.26803 17.4001 9.74803 17.14 9.94803 16.93L18.158 8.24005C19.398 6.92005 19.848 5.70005 18.038 4.00005C17.238 3.23005 16.548 2.91005 15.928 2.91005Z" fill="#9E9EA1"/>
-                      <path d="M17.3365 10.9501C17.3165 10.9501 17.2865 10.9501 17.2665 10.9501C14.1465 10.6401 11.6365 8.27009 11.1565 5.17009C11.0965 4.76009 11.3765 4.38009 11.7865 4.31009C12.1965 4.25009 12.5765 4.53009 12.6465 4.94009C13.0265 7.36009 14.9865 9.22009 17.4265 9.46009C17.8365 9.50009 18.1365 9.87009 18.0965 10.2801C18.0465 10.6601 17.7165 10.9501 17.3365 10.9501Z" fill="#9E9EA1"/>
+                      <path d="M5.53999 19.52C4.92999 19.52 4.35999 19.31 3.94999 18.92C3.42999 18.43 3.17999 17.69 3.26999 16.89L3.63999 13.65C3.70999 13.04 4.07999 12.23 4.50999 11.79L12.72 3.09999C14.77 0.929988 16.91 0.869988 19.08 2.91999C21.25 4.96999 21.31 7.10999 19.26 9.27999L11.05 17.97C10.63 18.42 9.84999 18.84 9.23999 18.94L6.01999 19.49C5.84999 19.5 5.69999 19.52 5.53999 19.52ZM15.93 2.90999C15.16 2.90999 14.49 3.38999 13.81 4.10999L5.59999 12.81C5.39999 13.02 5.16999 13.52 5.12999 13.81L4.75999 17.05C4.71999 17.38 4.79999 17.65 4.97999 17.82C5.15999 17.99 5.42999 18.05 5.75999 18L8.97999 17.45C9.26999 17.4 9.74999 17.14 9.94999 16.93L18.16 8.23999C19.4 6.91999 19.85 5.69999 18.04 3.99999C17.24 3.22999 16.55 2.90999 15.93 2.90999Z" fill="#9E9EA1"/>
+                      <path d="M17.3399 10.95C17.3199 10.95 17.2899 10.95 17.2699 10.95C14.1499 10.64 11.6399 8.27 11.1599 5.17C11.0999 4.76 11.3799 4.38 11.7899 4.31C12.1999 4.25 12.5799 4.53 12.6499 4.94C13.0299 7.36 14.9899 9.22 17.4299 9.46C17.8399 9.5 18.1399 9.87 18.0999 10.28C18.0499 10.66 17.7199 10.95 17.3399 10.95Z" fill="#9E9EA1"/>
                       <path d="M21 22.75H3C2.59 22.75 2.25 22.41 2.25 22C2.25 21.59 2.59 21.25 3 21.25H21C21.41 21.25 21.75 21.59 21.75 22C21.75 22.41 21.41 22.75 21 22.75Z" fill="#9E9EA1"/>
                     </svg>
                   </button>
                   <button className="action-button" onClick={() => handleDelete(league.id)}>
                     <svg className="action-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M12 22.75C6.07 22.75 1.25 17.93 1.25 12C1.25 6.07 6.07 1.25 12 1.25C17.93 1.25 22.75 6.07 22.75 12C22.75 17.93 17.93 22.75 12 22.75ZM12 2.75C6.9 2.75 2.75 6.9 2.75 12C2.75 17.1 6.9 21.25 12 21.25C17.1 21.25 21.25 17.1 21.25 12C21.25 6.9 17.1 2.75 12 2.75Z" fill="#9E9EA1"/>
-                      <path d="M9.16937 15.5801C8.97937 15.5801 8.78938 15.5101 8.63938 15.3601C8.34938 15.0701 8.34938 14.5901 8.63938 14.3001L14.2994 8.64011C14.5894 8.35011 15.0694 8.35011 15.3594 8.64011C15.6494 8.93011 15.6494 9.41011 15.3594 9.70011L9.69937 15.3601C9.55937 15.5101 9.35937 15.5801 9.16937 15.5801Z" fill="#9E9EA1"/>
-                      <path d="M14.8294 15.5801C14.6394 15.5801 14.4494 15.5101 14.2994 15.3601L8.63938 9.70011C8.34938 9.41011 8.34938 8.93011 8.63938 8.64011C8.92937 8.35011 9.40937 8.35011 9.69937 8.64011L15.3594 14.3001C15.6494 14.5901 15.6494 15.0701 15.3594 15.3601C15.2094 15.5101 15.0194 15.5801 14.8294 15.5801Z" fill="#9E9EA1"/>
+                      <path d="M9.16986 15.58C8.97986 15.58 8.78986 15.51 8.63986 15.36C8.34986 15.07 8.34986 14.59 8.63986 14.3L14.2999 8.63999C14.5899 8.34999 15.0699 8.34999 15.3599 8.63999C15.6499 8.92999 15.6499 9.40998 15.3599 9.69998L9.69986 15.36C9.55986 15.51 9.35986 15.58 9.16986 15.58Z" fill="#9E9EA1"/>
+                      <path d="M14.8299 15.58C14.6399 15.58 14.4499 15.51 14.2999 15.36L8.63986 9.69998C8.34986 9.40998 8.34986 8.92999 8.63986 8.63999C8.92986 8.34999 9.40986 8.34999 9.69986 8.63999L15.3599 14.3C15.6499 14.59 15.6499 15.07 15.3599 15.36C15.2099 15.51 15.0199 15.58 14.8299 15.58Z" fill="#9E9EA1"/>
                     </svg>
                   </button>
                 </div>
@@ -110,13 +110,29 @@ const LeaguesPage = () => {
             onClick={hasPreviousPage ? handlePreviousPage : undefined}
           >
             <svg className="pagination-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M15.0013 20.67C14.8113 20.67 14.6213 20.6 14.4713 20.45L7.95125 13.93C6.89125 12.87 6.89125 11.13 7.95125 10.07L14.4713 3.55002C14.7613 3.26002 15.2413 3.26002 15.5312 3.55002C15.8212 3.84002 15.8212 4.32002 15.5312 4.61002L9.01125 11.13C8.53125 11.61 8.53125 12.39 9.01125 12.87L15.5312 19.39C15.8212 19.68 15.8212 20.16 15.5312 20.45C15.3813 20.59 15.1912 20.67 15.0013 20.67Z" fill={hasPreviousPage ? "#FCFCFC" : "#5E5E62"}/>
+              <path d="M14.9998 20.67C14.8098 20.67 14.6198 20.6 14.4698 20.45L7.94979 13.93C6.88979 12.87 6.88979 11.13 7.94979 10.07L14.4698 3.54999C14.7598 3.25999 15.2398 3.25999 15.5298 3.54999C15.8198 3.83999 15.8198 4.31999 15.5298 4.60999L9.00979 11.13C8.52979 11.61 8.52979 12.39 9.00979 12.87L15.5298 19.39C15.8198 19.68 15.8198 20.16 15.5298 20.45C15.3798 20.59 15.1898 20.67 14.9998 20.67Z" fill="#5E5E62"/>
             </svg>
             <div className="pagination-text">Previous Page</div>
           </div>
 
           <div className="page-numbers">
             <div className="page-number active">{currentPage}</div>
+            {totalPages > 1 && (
+              <>
+                {currentPage + 1 <= totalPages && (
+                  <div className="page-number">{currentPage + 1}</div>
+                )}
+                {currentPage + 2 <= totalPages && (
+                  <div className="page-number">{currentPage + 2}</div>
+                )}
+                {currentPage + 3 < totalPages && (
+                  <div className="page-number">...</div>
+                )}
+                {totalPages > currentPage + 2 && (
+                  <div className="page-number">{totalPages}</div>
+                )}
+              </>
+            )}
           </div>
 
           <div
@@ -125,7 +141,7 @@ const LeaguesPage = () => {
           >
             <div className="pagination-text">Next Page</div>
             <svg className="pagination-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M8.91156 20.67C8.72156 20.67 8.53156 20.6 8.38156 20.45C8.09156 20.16 8.09156 19.68 8.38156 19.39L14.9016 12.87C15.3816 12.39 15.3816 11.61 14.9016 11.13L8.38156 4.61002C8.09156 4.32002 8.09156 3.84002 8.38156 3.55002C8.67156 3.26002 9.15156 3.26002 9.44156 3.55002L15.9616 10.07C16.4716 10.58 16.7616 11.27 16.7616 12C16.7616 12.73 16.4816 13.42 15.9616 13.93L9.44156 20.45C9.29156 20.59 9.10156 20.67 8.91156 20.67Z" fill={hasNextPage ? "#FCFCFC" : "#5E5E62"}/>
+              <path d="M8.90961 20.67C8.71961 20.67 8.52961 20.6 8.37961 20.45C8.08961 20.16 8.08961 19.68 8.37961 19.39L14.8996 12.87C15.3796 12.39 15.3796 11.61 14.8996 11.13L8.37961 4.60999C8.08961 4.31999 8.08961 3.83999 8.37961 3.54999C8.66961 3.25999 9.14961 3.25999 9.43961 3.54999L15.9596 10.07C16.4696 10.58 16.7596 11.27 16.7596 12C16.7596 12.73 16.4796 13.42 15.9596 13.93L9.43961 20.45C9.28961 20.59 9.09961 20.67 8.90961 20.67Z" fill="#FCFCFC"/>
             </svg>
           </div>
         </div>

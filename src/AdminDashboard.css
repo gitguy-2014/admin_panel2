@@ -72,7 +72,7 @@
   padding: 24px;
   flex-direction: column;
   align-items: flex-start;
-  gap: 16px;
+  gap: 24px;
   border-radius: 8px;
   background: var(--Neutral-08);
 }
@@ -86,6 +86,10 @@
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.2s ease;
+}
+
+.menu-item.has-dropdown {
+  justify-content: center;
 }
 
 .menu-item.active {
@@ -115,10 +119,19 @@
   font-weight: 700;
 }
 
+.dropdown-icon {
+  display: flex;
+  width: 16px;
+  height: 16px;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 1/1;
+}
+
 .logout {
   display: flex;
   width: 224px;
-  padding: 8px 24px;
+  padding: 16px 24px;
   align-items: center;
   gap: 16px;
   border-radius: 8px;
@@ -161,6 +174,7 @@
   flex-direction: column;
   flex: 1;
   height: 100vh;
+  position: relative;
 }
 
 .header {

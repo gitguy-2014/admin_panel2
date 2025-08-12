@@ -38,81 +38,69 @@ const EditLeagueModal = ({ league, onClose }) => {
         <div className="modal-header">
           <svg className="close-icon" onClick={onClose} width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M12 22.75C6.07 22.75 1.25 17.93 1.25 12C1.25 6.07 6.07 1.25 12 1.25C17.93 1.25 22.75 6.07 22.75 12C22.75 17.93 17.93 22.75 12 22.75ZM12 2.75C6.9 2.75 2.75 6.9 2.75 12C2.75 17.1 6.9 21.25 12 21.25C17.1 21.25 21.25 17.1 21.25 12C21.25 6.9 17.1 2.75 12 2.75Z" fill="#FCFCFC"/>
-            <path d="M9.16937 15.5801C8.97937 15.5801 8.78938 15.5101 8.63938 15.3601C8.34938 15.0701 8.34938 14.5901 8.63938 14.3001L14.2994 8.64011C14.5894 8.35011 15.0694 8.35011 15.3594 8.64011C15.6494 8.93011 15.6494 9.41011 15.3594 9.70011L9.69937 15.3601C9.55937 15.5101 9.35937 15.5801 9.16937 15.5801Z" fill="#FCFCFC"/>
-            <path d="M14.8294 15.5801C14.6394 15.5801 14.4494 15.5101 14.2994 15.3601L8.63938 9.70011C8.34938 9.41011 8.34938 8.93011 8.63938 8.64011C8.92937 8.35011 9.40937 8.35011 9.69937 8.64011L15.3594 14.3001C15.6494 14.5901 15.6494 15.0701 15.3594 15.3601C15.2094 15.5101 15.0194 15.5801 14.8294 15.5801Z" fill="#FCFCFC"/>
+            <path d="M9.16986 15.58C8.97986 15.58 8.78986 15.51 8.63986 15.36C8.34986 15.07 8.34986 14.59 8.63986 14.3L14.2999 8.63999C14.5899 8.34999 15.0699 8.34999 15.3599 8.63999C15.6499 8.92999 15.6499 9.40998 15.3599 9.69998L9.69986 15.36C9.55986 15.51 9.35986 15.58 9.16986 15.58Z" fill="#FCFCFC"/>
+            <path d="M14.8299 15.58C14.6399 15.58 14.4499 15.51 14.2999 15.36L8.63986 9.69998C8.34986 9.40998 8.34986 8.92999 8.63986 8.63999C8.92986 8.34999 9.40986 8.34999 9.69986 8.63999L15.3599 14.3C15.6499 14.59 15.6499 15.07 15.3599 15.36C15.2099 15.51 15.0199 15.58 14.8299 15.58Z" fill="#FCFCFC"/>
           </svg>
           <div className="modal-title">Edit League</div>
         </div>
 
-        <form onSubmit={handleSubmit}>
-          <div className="form-fields">
-            <div className="field-group">
-              <label className="field-label">Country</label>
-              <div className="dropdown-field filled">
-                <select
-                  name="country"
-                  value={formData.country}
-                  onChange={handleInputChange}
-                  className="dropdown-select filled"
-                >
-                  <option value="belgium">Belgium</option>
-                  <option value="france">France</option>
-                  <option value="spain">Spain</option>
-                  <option value="germany">Germany</option>
-                  <option value="italy">Italy</option>
-                </select>
-                <svg className="dropdown-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12.0034 16.7999C11.3034 16.7999 10.6034 16.5299 10.0734 15.9999L3.55344 9.47989C3.26344 9.18989 3.26344 8.70989 3.55344 8.41989C3.84344 8.12989 4.32344 8.12989 4.61344 8.41989L11.1334 14.9399C11.6134 15.4199 12.3934 15.4199 12.8734 14.9399L19.3934 8.41989C19.6834 8.12989 20.1634 8.12989 20.4534 8.41989C20.7434 8.70989 20.7434 9.18989 20.4534 9.47989L13.9334 15.9999C13.4034 16.5299 12.7034 16.7999 12.0034 16.7999Z" fill="#FCFCFC"/>
-                </svg>
-              </div>
-            </div>
-
-            <div className="field-group">
-              <label className="field-label">League Name</label>
-              <div className="text-field filled">
-                <input
-                  type="text"
-                  name="leagueName"
-                  value={formData.leagueName}
-                  onChange={handleInputChange}
-                  className="text-input filled"
-                  required
-                />
-              </div>
-            </div>
-
-            <div className="file-upload-container">
-              <div className="current-logo">
-                <img 
-                  src="https://api.builder.io/api/v1/image/assets/TEMP/d901f8d8f71e8d6efe317f3ecb0805588ea60e86?width=160" 
-                  alt="Current logo" 
-                  className="logo-preview"
-                />
-              </div>
-              <div className="file-upload-info">
-                <div className="file-label">Logo</div>
-                <div className="file-description">
-                  PNG Format - (Transparent)<br />
-                  Max file size allowed: 1MB
-                </div>
-                <input 
-                  type="file"
-                  accept=".png"
-                  onChange={handleFileUpload}
-                  className="file-input"
-                  id="logo-upload-edit"
-                />
-                <label htmlFor="logo-upload-edit" className="change-logo-button">
-                  Change Logo
-                </label>
-              </div>
+        <div className="form-fields">
+          <div className="field-group">
+            <div className="field-label">Country</div>
+            <div className="dropdown-field filled">
+              <div className="dropdown-text filled">Belgium</div>
+              <select
+                name="country"
+                value={formData.country}
+                onChange={handleInputChange}
+                className="dropdown-select filled"
+              >
+                <option value="Belgium">Belgium</option>
+                <option value="France">France</option>
+                <option value="Spain">Spain</option>
+                <option value="Germany">Germany</option>
+                <option value="Italy">Italy</option>
+              </select>
+              <svg className="dropdown-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 16.8C11.3 16.8 10.6 16.53 10.07 16L3.55002 9.48001C3.26002 9.19001 3.26002 8.71001 3.55002 8.42001C3.84002 8.13001 4.32002 8.13001 4.61002 8.42001L11.13 14.94C11.61 15.42 12.39 15.42 12.87 14.94L19.39 8.42001C19.68 8.13001 20.16 8.13001 20.45 8.42001C20.74 8.71001 20.74 9.19001 20.45 9.48001L13.93 16C13.4 16.53 12.7 16.8 12 16.8Z" fill="#FCFCFC"/>
+              </svg>
             </div>
           </div>
 
-          <button type="submit" className="save-button">
-            <span>Save</span>
-          </button>
-        </form>
+          <div className="field-group">
+            <div className="field-label">League Name</div>
+            <div className="text-field filled">
+              <input
+                type="text"
+                name="leagueName"
+                value={formData.leagueName}
+                onChange={handleInputChange}
+                className="text-input filled"
+                required
+              />
+            </div>
+          </div>
+
+          <div className="edit-logo-container">
+            <div className="current-logo">
+              <img 
+                src="https://api.builder.io/api/v1/image/assets/TEMP/d901f8d8f71e8d6efe317f3ecb0805588ea60e86?width=160" 
+                alt="Current logo" 
+              />
+            </div>
+            <div className="logo-info">
+              <div className="file-label">Logo</div>
+              <div className="file-description">
+                PNG Format - (Transparent)<br />
+                Max file size allowed: 1MB
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" onClick={handleSubmit} className="save-button">
+          <span>Save</span>
+        </button>
       </div>
     </div>
   );
