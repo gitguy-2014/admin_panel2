@@ -3,13 +3,22 @@ import './LeaguesPage.css';
 import NewLeagueModal from './NewLeagueModal';
 import EditLeagueModal from './EditLeagueModal';
 
+/**
+ * Leagues management page component
+ * Displays a table of leagues with CRUD operations and pagination
+ * Manages modal dialogs for creating and editing leagues
+ */
 const LeaguesPage = () => {
+  // Modal visibility state management
   const [showNewModal, setShowNewModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
+  // Currently selected league for editing
   const [selectedLeague, setSelectedLeague] = useState(null);
+  // Pagination state
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages] = useState(10);
+  const [totalPages] = useState(10); // Static for demo purposes
 
+  // Mock data for leagues - in real app this would come from API
   const leagues = [
     {
       id: 1,
@@ -31,34 +40,52 @@ const LeaguesPage = () => {
     }
   ];
 
+  /**
+   * Opens edit modal with selected league data
+   * @param {Object} league - League object to edit
+   */
   const handleEdit = (league) => {
     setSelectedLeague(league);
     setShowEditModal(true);
   };
 
+  /**
+   * Handles league deletion (currently just logs - would integrate with API)
+   * @param {number} leagueId - ID of league to delete
+   */
   const handleDelete = (leagueId) => {
     console.log('Delete league:', leagueId);
+    // TODO: Implement actual deletion logic with API call
   };
 
+  /**
+   * Navigate to previous page if available
+   */
   const handlePreviousPage = () => {
     if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
     }
   };
 
+  /**
+   * Navigate to next page if available
+   */
   const handleNextPage = () => {
     if (currentPage < totalPages) {
       setCurrentPage(currentPage + 1);
     }
   };
 
+  // Computed pagination state
   const hasPreviousPage = currentPage > 1;
   const hasNextPage = currentPage < totalPages;
 
   return (
     <div className="leagues-page">
       <div className="table-container">
+        {/* Leagues data table */}
         <div className="leagues-table">
+          {/* Table header with column titles and New League button */}
           <div className="table-header">
             <div className="header-cell logo-header">Logo</div>
             <div className="header-cell name-header">
@@ -66,6 +93,7 @@ const LeaguesPage = () => {
             </div>
             <div className="header-cell country-header">Country</div>
             <div className="header-actions">
+              {/* Button to open new league creation modal */}
               <button className="new-league-button" onClick={() => setShowNewModal(true)}>
                 <svg className="button-icon" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M15 9.75H9.75V15H8.25V9.75H3V8.25H8.25V3H9.75V8.25H15V9.75Z" fill="#0D0D0D"/>
@@ -74,16 +102,22 @@ const LeaguesPage = () => {
               </button>
             </div>
           </div>
-          
+
+          {/* Table body with league data rows */}
           <div className="table-body">
             {leagues.map((league) => (
               <div key={league.id} className="table-row">
+                {/* League logo column */}
                 <div className="table-cell logo-cell">
                   <img src={league.logo} alt="" className="league-logo" />
                 </div>
+                {/* League name column */}
                 <div className="table-cell name-cell">{league.name}</div>
+                {/* Country column */}
                 <div className="table-cell country-cell">{league.country}</div>
+                {/* Action buttons column (edit/delete) */}
                 <div className="table-cell actions-cell">
+                  {/* Edit button */}
                   <button className="action-button" onClick={() => handleEdit(league)}>
                     <svg className="action-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M5.53999 19.52C4.92999 19.52 4.35999 19.31 3.94999 18.92C3.42999 18.43 3.17999 17.69 3.26999 16.89L3.63999 13.65C3.70999 13.04 4.07999 12.23 4.50999 11.79L12.72 3.09999C14.77 0.929988 16.91 0.869988 19.08 2.91999C21.25 4.96999 21.31 7.10999 19.26 9.27999L11.05 17.97C10.63 18.42 9.84999 18.84 9.23999 18.94L6.01999 19.49C5.84999 19.5 5.69999 19.52 5.53999 19.52ZM15.93 2.90999C15.16 2.90999 14.49 3.38999 13.81 4.10999L5.59999 12.81C5.39999 13.02 5.16999 13.52 5.12999 13.81L4.75999 17.05C4.71999 17.38 4.79999 17.65 4.97999 17.82C5.15999 17.99 5.42999 18.05 5.75999 18L8.97999 17.45C9.26999 17.4 9.74999 17.14 9.94999 16.93L18.16 8.23999C19.4 6.91999 19.85 5.69999 18.04 3.99999C17.24 3.22999 16.55 2.90999 15.93 2.90999Z" fill="#9E9EA1"/>
@@ -91,6 +125,7 @@ const LeaguesPage = () => {
                       <path d="M21 22.75H3C2.59 22.75 2.25 22.41 2.25 22C2.25 21.59 2.59 21.25 3 21.25H21C21.41 21.25 21.75 21.59 21.75 22C21.75 22.41 21.41 22.75 21 22.75Z" fill="#9E9EA1"/>
                     </svg>
                   </button>
+                  {/* Delete button */}
                   <button className="action-button" onClick={() => handleDelete(league.id)}>
                     <svg className="action-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M12 22.75C6.07 22.75 1.25 17.93 1.25 12C1.25 6.07 6.07 1.25 12 1.25C17.93 1.25 22.75 6.07 22.75 12C22.75 17.93 17.93 22.75 12 22.75ZM12 2.75C6.9 2.75 2.75 6.9 2.75 12C2.75 17.1 6.9 21.25 12 21.25C17.1 21.25 21.25 17.1 21.25 12C21.25 6.9 17.1 2.75 12 2.75Z" fill="#9E9EA1"/>
@@ -103,8 +138,10 @@ const LeaguesPage = () => {
             ))}
           </div>
         </div>
-        
+
+        {/* Pagination controls */}
         <div className="pagination-container">
+          {/* Previous page button */}
           <div
             className={`previous-page ${hasPreviousPage ? 'active' : 'disabled'}`}
             onClick={hasPreviousPage ? handlePreviousPage : undefined}
@@ -115,8 +152,11 @@ const LeaguesPage = () => {
             <div className="pagination-text">Previous Page</div>
           </div>
 
+          {/* Page numbers display */}
           <div className="page-numbers">
+            {/* Current page number (highlighted) */}
             <div className="page-number active">{currentPage}</div>
+            {/* Additional page numbers when there are multiple pages */}
             {totalPages > 1 && (
               <>
                 {currentPage + 1 <= totalPages && (
@@ -125,9 +165,11 @@ const LeaguesPage = () => {
                 {currentPage + 2 <= totalPages && (
                   <div className="page-number">{currentPage + 2}</div>
                 )}
+                {/* Ellipsis for gap when there are many pages */}
                 {currentPage + 3 < totalPages && (
                   <div className="page-number">...</div>
                 )}
+                {/* Last page number if far from current */}
                 {totalPages > currentPage + 2 && (
                   <div className="page-number">{totalPages}</div>
                 )}
@@ -135,6 +177,7 @@ const LeaguesPage = () => {
             )}
           </div>
 
+          {/* Next page button */}
           <div
             className={`next-page ${hasNextPage ? 'active' : 'disabled'}`}
             onClick={hasNextPage ? handleNextPage : undefined}
@@ -147,14 +190,17 @@ const LeaguesPage = () => {
         </div>
       </div>
 
+      {/* Modal dialogs - conditionally rendered */}
+      {/* New league creation modal */}
       {showNewModal && (
         <NewLeagueModal onClose={() => setShowNewModal(false)} />
       )}
 
+      {/* Edit league modal */}
       {showEditModal && (
-        <EditLeagueModal 
+        <EditLeagueModal
           league={selectedLeague}
-          onClose={() => setShowEditModal(false)} 
+          onClose={() => setShowEditModal(false)}
         />
       )}
     </div>
