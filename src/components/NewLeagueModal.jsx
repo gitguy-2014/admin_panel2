@@ -36,10 +36,15 @@ const NewLeagueModal = ({ onClose, onSave }) => {
     };
 
     console.log('Creating new league:', submissionData);
-    
+
+    // Call the onSave callback if provided
+    if (onSave) {
+      onSave(formData);
+    }
+
     // Show success message
     alert('League created successfully!');
-    
+
     // Close modal
     onClose();
   };
