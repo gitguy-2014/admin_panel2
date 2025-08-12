@@ -89,7 +89,7 @@
 .new-league-button {
   display: flex;
   height: 40px;
-  flex-direction: column;
+  padding: 10px 24px 10px 16px;
   justify-content: center;
   align-items: center;
   gap: 8px;
@@ -118,16 +118,6 @@
   font-weight: 500;
   line-height: 20px;
   letter-spacing: 0.1px;
-}
-
-.new-league-button {
-  display: flex;
-  padding: 10px 24px 10px 16px;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  flex: 1;
-  align-self: stretch;
 }
 
 .table-body {
