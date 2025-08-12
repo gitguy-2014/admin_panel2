@@ -104,12 +104,33 @@
   border-color: var(--White);
 }
 
+.dropdown-text {
+  width: 254.438px;
+  color: var(--Neutral);
+  font-family: 'Bai Jamjuree', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.1px;
+  pointer-events: none;
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.dropdown-text.filled {
+  color: var(--White);
+}
+
 .dropdown-select {
   width: 100%;
+  height: 100%;
   background: transparent;
   border: none;
   outline: none;
-  color: var(--Neutral);
+  color: transparent;
   font-family: 'Bai Jamjuree', -apple-system, Roboto, Helvetica, sans-serif;
   font-size: 14px;
   font-style: normal;
@@ -118,10 +139,10 @@
   letter-spacing: 0.1px;
   appearance: none;
   cursor: pointer;
-}
-
-.dropdown-select.filled {
-  color: var(--White);
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
 }
 
 .dropdown-select option {
@@ -135,6 +156,7 @@
   pointer-events: none;
   width: 24px;
   height: 24px;
+  z-index: 2;
 }
 
 .text-field {
@@ -212,6 +234,8 @@
   width: 100%;
   height: 100%;
   cursor: pointer;
+  top: 0;
+  left: 0;
 }
 
 .file-upload-label {
@@ -223,6 +247,7 @@
   flex-shrink: 0;
   aspect-ratio: 1/1;
   cursor: pointer;
+  pointer-events: none;
 }
 
 .file-upload-info {
