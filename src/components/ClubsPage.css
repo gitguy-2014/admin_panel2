@@ -83,6 +83,7 @@
   line-height: 20px;
   letter-spacing: 0.1px;
   color: #0D0D0D;
+  white-space: nowrap;
 }
 
 .new-club-btn:hover {
