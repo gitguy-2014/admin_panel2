@@ -18,8 +18,8 @@ const LeaguesPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages] = useState(10); // Static for demo purposes
 
-  // Mock data for leagues - in real app this would come from API
-  const leagues = [
+  // League data state management
+  const [leagues, setLeagues] = useState([
     {
       id: 1,
       name: 'Liga Profesional',
@@ -28,17 +28,17 @@ const LeaguesPage = () => {
     },
     {
       id: 2,
-      name: 'Liga Profesional',
-      country: 'Belgium',
+      name: 'Premier League',
+      country: 'England',
       logo: 'https://api.builder.io/api/v1/image/assets/TEMP/3fb5cb3339d76ef30ac204a1f0966c2c37a5ad07?width=76'
     },
     {
       id: 3,
-      name: 'Liga Profesional',
-      country: 'Belgium',
+      name: 'La Liga',
+      country: 'Spain',
       logo: 'https://api.builder.io/api/v1/image/assets/TEMP/45e6d6ad31cd3712e484b4c960f98c5d90f3b3cc?width=76'
     }
-  ];
+  ]);
 
   /**
    * Opens edit modal with selected league data
