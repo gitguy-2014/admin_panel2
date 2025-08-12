@@ -36,10 +36,15 @@ const EditLeagueModal = ({ league, onClose, onSave }) => {
     };
 
     console.log('Updating league:', submissionData);
-    
+
+    // Call the onSave callback if provided
+    if (onSave) {
+      onSave(formData);
+    }
+
     // Show success message
     alert('League updated successfully!');
-    
+
     // Close modal
     onClose();
   };
