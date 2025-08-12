@@ -1,5 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;700&family=Roboto:wght@400;500&display=swap');
 
+:root {
+  --Neutral-09: #131314;
+  --Neutral-08: #262627;
+  --White: #FCFCFC;
+  --Neutral: #5E5E62;
+  --Black: #0D0D0D;
+  --Neutral-03: #9E9EA1;
+}
+
+/* Modal overlay with backdrop blur */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -14,6 +24,7 @@
   z-index: 1000;
 }
 
+/* Main modal container */
 .modal-container {
   display: flex;
   width: 512px;
@@ -23,29 +34,34 @@
   gap: 24px;
   border-radius: 8px;
   background: var(--Neutral-08);
-  max-height: 90vh;
-  overflow-y: auto;
+  height: 560px;
+  position: relative;
 }
 
+/* Modal header with close button and title */
 .modal-header {
   display: flex;
   align-items: center;
   gap: 16px;
   align-self: stretch;
+  position: relative;
 }
 
-.close-icon {
+.close-btn {
   display: flex;
   width: 24px;
   height: 24px;
   justify-content: center;
   align-items: center;
   aspect-ratio: 1/1;
+  background: transparent;
+  border: none;
   cursor: pointer;
   transition: opacity 0.2s ease;
+  padding: 0;
 }
 
-.close-icon:hover {
+.close-btn:hover {
   opacity: 0.8;
 }
 
@@ -56,6 +72,18 @@
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+  margin: 0;
+}
+
+/* Form structure */
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 24px;
+  align-self: stretch;
+  flex: 1;
+  width: 100%;
 }
 
 .form-fields {
@@ -64,9 +92,11 @@
   align-items: flex-start;
   gap: 16px;
   align-self: stretch;
+  flex: 1;
 }
 
-.field-group {
+/* Form group for each field */
+.form-group {
   display: flex;
   height: 64px;
   flex-direction: column;
@@ -75,7 +105,8 @@
   align-self: stretch;
 }
 
-.field-label {
+/* Form labels */
+.form-label {
   width: 226px;
   color: var(--Neutral-03);
   font-family: 'Bai Jamjuree', -apple-system, Roboto, Helvetica, sans-serif;
@@ -86,6 +117,7 @@
   letter-spacing: 0.5px;
 }
 
+/* Dropdown field styling */
 .dropdown-field {
   display: flex;
   height: 40px;
@@ -104,6 +136,7 @@
   border-color: var(--White);
 }
 
+/* Dropdown text overlay */
 .dropdown-text {
   width: 254.438px;
   color: var(--Neutral);
@@ -118,12 +151,14 @@
   left: 16px;
   top: 50%;
   transform: translateY(-50%);
+  z-index: 2;
 }
 
 .dropdown-text.filled {
   color: var(--White);
 }
 
+/* Hidden select element */
 .dropdown-select {
   width: 100%;
   height: 100%;
@@ -142,7 +177,7 @@
   position: absolute;
   left: 0;
   top: 0;
-  z-index: 1;
+  z-index: 3;
 }
 
 .dropdown-select option {
@@ -150,15 +185,23 @@
   color: var(--White);
 }
 
+/* Dropdown arrow */
 .dropdown-arrow {
   position: absolute;
   right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
   pointer-events: none;
   width: 24px;
   height: 24px;
-  z-index: 2;
+  z-index: 1;
 }
 
+.dropdown-field.filled .dropdown-arrow path {
+  fill: var(--White);
+}
+
+/* Text field styling */
 .text-field {
   display: flex;
   height: 40px;
@@ -177,7 +220,7 @@
 }
 
 .text-input {
-  width: 100%;
+  width: 254.438px;
   background: transparent;
   border: none;
   outline: none;
@@ -206,6 +249,7 @@
   border-color: var(--White);
 }
 
+/* File upload container */
 .file-upload-container {
   display: flex;
   align-items: flex-start;
@@ -213,6 +257,7 @@
   align-self: stretch;
 }
 
+/* Upload icon area */
 .file-upload-icon {
   display: flex;
   width: 80px;
@@ -226,6 +271,18 @@
   border: 1px solid var(--Neutral);
   background: transparent;
   position: relative;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.file-upload-icon:hover {
+  border-color: var(--White);
+  background: rgba(252, 252, 252, 0.05);
+}
+
+.file-upload-icon.drag-over {
+  border-color: var(--White);
+  background: rgba(252, 252, 252, 0.1);
 }
 
 .file-input {
@@ -236,6 +293,7 @@
   cursor: pointer;
   top: 0;
   left: 0;
+  z-index: 2;
 }
 
 .file-upload-label {
@@ -250,6 +308,7 @@
   pointer-events: none;
 }
 
+/* File upload info */
 .file-upload-info {
   display: flex;
   flex-direction: column;
@@ -280,6 +339,7 @@
   letter-spacing: 0.1px;
 }
 
+/* Save button */
 .save-button {
   display: flex;
   width: 140px;
@@ -310,10 +370,53 @@
   letter-spacing: 0.1px;
 }
 
-/* Edit League Modal specific styles */
+/* File preview in upload area */
+.file-preview {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.preview-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+.remove-file-btn {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 20px;
+  height: 20px;
+  background: var(--Neutral-08);
+  border: 1px solid var(--Neutral);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.remove-file-btn:hover {
+  background: var(--Neutral);
+}
+
+.file-name {
+  color: var(--White);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* Edit logo container for Edit modal */
 .edit-logo-container {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 16px;
   align-self: stretch;
 }
@@ -330,12 +433,56 @@
   border: 1px solid var(--Neutral);
   background: transparent;
   overflow: hidden;
+  position: relative;
 }
 
 .current-logo img {
   width: 100%;
   height: 100%;
   object-fit: contain;
+}
+
+.logo-upload-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(13, 13, 13, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  cursor: pointer;
+}
+
+.current-logo:hover .logo-upload-overlay {
+  opacity: 1;
+}
+
+.logo-upload-overlay.drag-over {
+  opacity: 1;
+  background: rgba(13, 13, 13, 0.9);
+}
+
+.edit-upload-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  color: var(--White);
+  font-family: 'Bai Jamjuree', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  pointer-events: none;
+}
+
+.remove-file-btn.edit-remove {
+  top: 4px;
+  right: 4px;
+  background: rgba(13, 13, 13, 0.8);
 }
 
 .logo-info {
@@ -352,6 +499,9 @@
     width: calc(100% - 32px);
     max-width: 480px;
     margin: 16px;
+    height: auto;
+    max-height: 90vh;
+    overflow-y: auto;
   }
 
   .file-upload-container,
@@ -374,6 +524,11 @@
   }
 
   .save-button {
+    width: 100%;
+  }
+
+  .dropdown-text,
+  .text-input {
     width: 100%;
   }
 }
