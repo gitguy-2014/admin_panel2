@@ -50,12 +50,46 @@ const LeaguesPage = () => {
   };
 
   /**
-   * Handles league deletion (currently just logs - would integrate with API)
+   * Handles creating a new league
+   * @param {Object} newLeague - New league data
+   */
+  const handleCreateLeague = (newLeague) => {
+    const league = {
+      ...newLeague,
+      id: Date.now(), // Generate unique ID
+      logo: newLeague.logo ? URL.createObjectURL(newLeague.logo) : 'https://api.builder.io/api/v1/image/assets/TEMP/45e6d6ad31cd3712e484b4c960f98c5d90f3b3cc?width=76'
+    };
+
+    setLeagues(prev => [...prev, league]);
+    console.log('Created new league:', league);
+  };
+
+  /**
+   * Handles updating an existing league
+   * @param {Object} updatedLeague - Updated league data
+   */
+  const handleUpdateLeague = (updatedLeague) => {
+    setLeagues(prev => prev.map(league =>
+      league.id === selectedLeague?.id
+        ? {
+            ...league,
+            ...updatedLeague,
+            logo: updatedLeague.logo ? URL.createObjectURL(updatedLeague.logo) : league.logo
+          }
+        : league
+    ));
+    console.log('Updated league:', updatedLeague);
+  };
+
+  /**
+   * Handles league deletion with confirmation
    * @param {number} leagueId - ID of league to delete
    */
   const handleDelete = (leagueId) => {
-    console.log('Delete league:', leagueId);
-    // TODO: Implement actual deletion logic with API call
+    if (window.confirm('Are you sure you want to delete this league?')) {
+      setLeagues(prev => prev.filter(league => league.id !== leagueId));
+      console.log('Deleted league:', leagueId);
+    }
   };
 
   /**
