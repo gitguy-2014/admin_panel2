@@ -2,26 +2,43 @@ import React, { useState } from 'react';
 import './LoginPage.css';
 import { validateCredentials, MOCK_ADMIN_CREDENTIALS } from './mockCredentials';
 
+/**
+ * Login page component with authentication form
+ * Handles user login with username/password validation
+ * @param {Function} onLogin - Callback function called when login is successful
+ */
 const LoginPage = ({ onLogin }) => {
+  // Form state management
   const [formData, setFormData] = useState({
     username: '',
     password: '',
     rememberMe: false
   });
+  // Controls password field visibility (show/hide password)
   const [showPassword, setShowPassword] = useState(false);
+  // Controls error message display for invalid credentials
   const [showError, setShowError] = useState(false);
 
+  /**
+   * Handles changes to form inputs (text fields and checkbox)
+   * Automatically clears error state when user starts typing
+   */
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData(prev => ({
       ...prev,
       [name]: type === 'checkbox' ? checked : value
     }));
+    // Clear error message when user starts typing again
     if (showError) {
       setShowError(false);
     }
   };
 
+  /**
+   * Handles form submission and credential validation
+   * Shows success/error states based on validation result
+   */
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validateCredentials(formData.username, formData.password)) {
@@ -33,6 +50,9 @@ const LoginPage = ({ onLogin }) => {
     }
   };
 
+  /**
+   * Toggles password field visibility between text and password type
+   */
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
@@ -41,14 +61,17 @@ const LoginPage = ({ onLogin }) => {
     <div className="login-page">
       <div className="background-overlay">
         <div className="login-container">
+          {/* Page header with welcome message */}
           <div className="header-section">
             <h1 className="welcome-title">Welcome.</h1>
             <p className="welcome-subtitle">Please log in to access the admin panel.</p>
           </div>
 
           <div className="form-container">
+            {/* Login form with conditional error styling */}
             <form className={`login-form ${showError ? 'has-error' : ''}`} onSubmit={handleSubmit}>
               <div className="input-fields">
+                {/* Username input field */}
                 <div className="field-wrapper">
                   <label className="input-label">Username</label>
                   <div className="input-container">
@@ -64,6 +87,7 @@ const LoginPage = ({ onLogin }) => {
                   </div>
                 </div>
 
+                {/* Password input field with visibility toggle */}
                 <div className="field-wrapper">
                   <label className="input-label">Password</label>
                   <div className="input-container password-input">
@@ -76,6 +100,7 @@ const LoginPage = ({ onLogin }) => {
                       onChange={handleInputChange}
                       required
                     />
+                    {/* Eye icon button to toggle password visibility */}
                     <button
                       type="button"
                       className="eye-toggle"
@@ -95,11 +120,14 @@ const LoginPage = ({ onLogin }) => {
                 </div>
               </div>
 
+              {/* Form actions: Remember Me checkbox and Login button */}
               <div className="form-actions">
+                {/* Remember Me checkbox with custom styling */}
                 <div className="remember-section">
                   <div className="checkbox-container">
                     <div className="checkbox-state-layer">
                       <div className={`checkbox-box ${formData.rememberMe ? 'checked' : ''}`}>
+                        {/* Checkmark icon - only shown when checked */}
                         {formData.rememberMe && (
                           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M10 16.4L6 12.4L7.4 11L10 13.6L16.6 7L18 8.4L10 16.4Z" fill="#0D0D0D"/>
@@ -107,6 +135,7 @@ const LoginPage = ({ onLogin }) => {
                         )}
                       </div>
                     </div>
+                    {/* Hidden native checkbox for accessibility */}
                     <input
                       type="checkbox"
                       id="rememberMe"
@@ -119,6 +148,7 @@ const LoginPage = ({ onLogin }) => {
                   <label htmlFor="rememberMe" className="remember-text">Remember Me</label>
                 </div>
 
+                {/* Login submit button */}
                 <button type="submit" className="submit-button">
                   <div className="button-state-layer">
                     <span className="button-text">Login</span>
@@ -127,8 +157,10 @@ const LoginPage = ({ onLogin }) => {
               </div>
             </form>
 
+            {/* Error message display - only shown when credentials are invalid */}
             {showError && (
               <div className="error-section">
+                {/* Error icon */}
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M12 22.75C6.07 22.75 1.25 17.93 1.25 12C1.25 6.07 6.07 1.25 12 1.25C17.93 1.25 22.75 6.07 22.75 12C22.75 17.93 17.93 22.75 12 22.75ZM12 2.75C6.9 2.75 2.75 6.9 2.75 12C2.75 17.1 6.9 21.25 12 21.25C17.1 21.25 21.25 17.1 21.25 12C21.25 6.9 17.1 2.75 12 2.75Z" fill="#BA7774"/>
                   <path d="M9.16937 15.5801C8.97937 15.5801 8.78938 15.5101 8.63938 15.3601C8.34938 15.0701 8.34938 14.5901 8.63938 14.3001L14.2994 8.64011C14.5894 8.35011 15.0694 8.35011 15.3594 8.64011C15.6494 8.93011 15.6494 9.41011 15.3594 9.70011L9.69937 15.3601C9.55937 15.5101 9.35937 15.5801 9.16937 15.5801Z" fill="#BA7774"/>
